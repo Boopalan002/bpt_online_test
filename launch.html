@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Launch Exam</title>
+    <script>
+        function openExam() {
+            let examWindow = window.open("exam.html", "_blank", "width=1024,height=768");
+
+            if (!examWindow || examWindow.closed || typeof examWindow.closed == "undefined") {
+                alert("Popup blocked! Please allow popups in your browser settings.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Start Online Exam</h2>
+    <button onclick="openExam()">Open Exam</button>
+</body>
+</html>

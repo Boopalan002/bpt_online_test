@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Exam</title>
+    <script>
+        let warningCount = 0; // Track tab switch warnings
+
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                warningCount++;
+                alert("Warning " + warningCount + ": Do not switch tabs! Exam will be submitted after 2 warnings.");
+                
+                if (warningCount >= 2) {
+                    autoSubmitForm();
+                }
+            }
+        });
+
+        function autoSubmitForm() {
+            // Disable the exam form
+            document.getElementById("examFrame").style.pointerEvents = "none";
+            
+            // Alert user
+            alert("Your exam has been auto-submitted. The window will now close.");
+
+            // Close the window (works only if opened via JavaScript)
+            window.open('', '_self').close();
+
+            // If close fails, redirect to an exit page
+            setTimeout(() => {
+                window.location.href = "https://www.microsoft.com";
+            }, 3000);
+        }
+    </script>
+</head>
+<body>
+    <h2 style="text-align: center;">Online Test - I BPT - Basic Computers & MS Office</h2>
+    <iframe id="examFrame" 
+            src="https://forms.office.com/r/Yn3qDqej5g" 
+            width="100%" height="800px" frameborder="0">
+        Loading...
+    </iframe>
+</body>
+</html>
